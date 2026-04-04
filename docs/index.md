@@ -1,4 +1,4 @@
-# Curly Fiesta
+# Home
 
 Exploring modern Python packaging with `pyproject.toml`.
 
