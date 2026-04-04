@@ -56,3 +56,7 @@ start-backend = "uvicorn backend.main:app --reload"
 start-frontend = "cd frontend && npm start"
 start = ["start-backend", "start-frontend"]
 ```
+
+To define dependency groups that can be installed, use `[project.optional-dependencies]`. Example:  `pip install -e .[dev]` or `pip install -e .[dev,docs]`
+
+**Note**: If you don't build a Python package, but a mixed project between backend and frontend, you likely don't need `[tool.hatch.build.targets.*]` at all — those are for publishing to PyPI.
