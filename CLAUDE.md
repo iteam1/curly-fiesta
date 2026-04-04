@@ -1,40 +1,5 @@
 # CLAUDE.md
 
-## Project Structure
-
-Excalidraw is a **monorepo** with a clear separation between the core library and the application:
-
-- **`packages/excalidraw/`** - Main React component library published to npm as `@excalidraw/excalidraw`
-- **`excalidraw-app/`** - Full-featured web application (excalidraw.com) that uses the library
-- **`packages/`** - Core packages: `@excalidraw/common`, `@excalidraw/element`, `@excalidraw/math`, `@excalidraw/utils`
-- **`examples/`** - Integration examples (NextJS, browser script)
-
-## Development Workflow
-
-1. **Package Development**: Work in `packages/*` for editor features
-2. **App Development**: Work in `excalidraw-app/` for app-specific features
-3. **Testing**: Always run `yarn test:update` before committing
-4. **Type Safety**: Use `yarn test:typecheck` to verify TypeScript
-
-## Development Commands
-
-```bash
-yarn test:typecheck  # TypeScript type checking
-yarn test:update     # Run all tests (with snapshot updates)
-yarn fix             # Auto-fix formatting and linting issues
-```
-
-## Architecture Notes
-
-### Package System
-
-- Uses Yarn workspaces for monorepo management
-- Internal packages use path aliases (see `vitest.config.mts`)
-- Build system uses esbuild for packages, Vite for the app
-- TypeScript throughout with strict configuration
-
----
-
 ## Safety Guardrails (ALWAYS follow — no exceptions without explicit user confirmation)
 
 These rules replicate the protections of Claude Code's auto-mode classifier. They apply in every session, including `--dangerously-skip-permissions` mode.
@@ -68,7 +33,7 @@ When in doubt, choose the more reversible path.
 - Deploy to production environments
 - Run database migrations against production
 - Modify shared infrastructure (Terraform, CloudFormation, Kubernetes manifests)
-- Modify CI/CD pipeline definitions (`.github/workflows/`, `Dockerfile`, etc.) beyond what was explicitly requested
+- Modify CI/CD pipeline definitions beyond what was explicitly requested
 
 #### Secrets & Credentials
 - Commit `.env`, `*.pem`, `*.key`, credential files, or any file containing secrets
@@ -96,14 +61,14 @@ When in doubt, choose the more reversible path.
 
 - Reading any file in the working directory
 - Creating and editing files in the working directory
-- Running declared scripts: `yarn test`, `yarn build`, `yarn fix`, `yarn test:typecheck`, `yarn test:update`
-- Installing dependencies declared in `package.json` / `yarn.lock` from official registries (npm)
+- Running declared scripts from `package.json`, `Makefile`, or equivalent
+- Installing dependencies from official registries declared in lock files
 - Read-only HTTP requests (fetching docs, checking APIs)
 - Normal git operations: `git add`, `git commit`, `git checkout -b <new-branch>`, `git status`, `git log`, `git diff`
 - Pushing to a branch Claude created during the session
 - Pushing to the current working branch (non-protected) when explicitly asked
 - Creating pull requests
-- Running linters and formatters
+- Running linters, formatters, and tests
 
 ---
 
@@ -115,16 +80,6 @@ A general instruction does **not** authorize specific high-risk sub-actions. Exa
 - "Update the config" → does NOT authorize changing CI/CD or secrets
 
 If completing a task requires a blocked action, stop and ask the user before proceeding.
-
----
-
-### Sensitive Paths — handle with extra care
-
-- `.git/` — never modify directly
-- `.env`, `.env.*` — read only; never commit or exfiltrate
-- `.github/workflows/` — only modify what was explicitly requested
-- `infra/`, `terraform/`, `k8s/` — pause and confirm before any write
-- `packages/excalidraw/src/` — core library; be conservative, run tests after changes
 
 ---
 
