@@ -1,0 +1,58 @@
+# 1. HOW TO BUILD
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# 2. PROJECT METADATA
+[project]
+name = "curly-fiesta"
+version = "0.1.0"
+description = "Exploring modern Python packaging with pyproject.toml" # optional
+readme = "README.md" # optional
+requires-python = ">=3.11" # optional
+license = "MIT" # optional
+keywords = ["curly", "fiesta"] # optional
+dependencies = [ # optional
+    "python-dotenv>=1.0.0",
+]
+
+# 3. ENTRY POINTS
+# Defines console scripts that can be executed
+[project.scripts]
+curly-fiesta = "curly_fiesta.cli:main"
+
+# 4. DEPENDENCY GROUPS
+# Defines dependency groups that can be installed
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "pytest>=7.0.0",
+]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.0.0",
+    "mkdocs-awesome-pages-plugin>=2.0.0",
+    "mkdocs-llmstxt>=0.1.0",
+    "mkdocs-kroki-plugin>=0.8.0",
+]
+
+# 5. TOOL CONFIGURATION
+
+# Defines how to build the package
+[tool.hatch.build.targets.wheel] # optional: needed for editable installs and local development
+packages = ["src/curly_fiesta"] # hatchling strips src/ prefix — installs as `curly_fiesta`, not `src.curly_fiesta`
+
+[tool.hatch.build.targets.sdist] # optional: only needed when publishing to PyPI
+include = ["src/curly_fiesta"]
+
+[tool.ruff]
+target-version = "py311" # Configuration for Ruff, targets Python 3.11 syntax and features
+
+[tool.mypy]
+python_version = "3.11" # Uses Python 3.11 type system features
+strict = true # Configuration for MyPy, enables strict type checking
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"] # src/ not src/curly_fiesta — adds the container to sys.path so `import curly_fiesta` works
