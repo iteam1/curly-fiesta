@@ -1,0 +1,35 @@
+site_name: Curly Fiesta
+site_url: http://localhost:8000
+site_description: Exploring modern Python packaging with pyproject.toml
+
+theme:
+  name: material
+
+plugins:
+  - search:
+      prebuild_index: true
+      lang:
+        - en
+  - awesome-pages
+  - kroki
+  - llmstxt:
+      full_output: llms-full.txt
+      sections:
+        Docs:
+          - "**"
+
+markdown_extensions:
+  # Code blocks with syntax highlighting
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  # Diagrams via kroki (mermaid, plantuml, graphviz, d2, etc.)
+  - pymdownx.superfences:
+      custom_fences:
+        - name: kroki-mermaid
+          class: kroki
+          format: !!python/name:mkdocs_kroki.fence_kroki_mermaid_format
+        - name: kroki-plantuml
+          class: kroki
+          format: !!python/name:mkdocs_kroki.fence_kroki_plantuml_format
