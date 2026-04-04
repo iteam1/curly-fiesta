@@ -9,7 +9,7 @@ name = "curly-fiesta"
 version = "0.1.0"
 description = "Exploring modern Python packaging with pyproject.toml" # optional
 readme = "README.md" # optional
-requires-python = ">=3.11" # optional
+requires-python = ">=3.12" # optional
 license = "MIT" # optional
 keywords = ["curly", "fiesta"] # optional
 dependencies = [ # optional
@@ -47,10 +47,10 @@ packages = ["src/curly_fiesta"] # hatchling strips src/ prefix — installs as `
 include = ["src/curly_fiesta"]
 
 [tool.ruff]
-target-version = "py311" # Configuration for Ruff, targets Python 3.11 syntax and features
+target-version = "py312" # Configuration for Ruff, targets Python 3.12 syntax and features
 
 [tool.mypy]
-python_version = "3.11" # Uses Python 3.11 type system features
+python_version = "3.12" # Uses Python 3.12 type system features
 strict = true # Configuration for MyPy, enables strict type checking
 
 [tool.pytest.ini_options]

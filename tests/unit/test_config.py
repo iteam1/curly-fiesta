@@ -1,4 +1,3 @@
-import os
 from curly_fiesta.config import get
 
 
