@@ -20,10 +20,23 @@ uv run mkdocs serve
 
 ## Diagrams
 
-```kroki-mermaid
+### Mermaid
+
+```mermaid
 graph TD
     A[pyproject.toml] --> B[hatchling]
     B --> C[curly_fiesta package]
     A --> D[uv sync]
     D --> E[.venv]
+```
+
+### PlantUML
+
+```kroki-plantuml
+@startuml
+package "curly-fiesta" {
+  [cli] --> [config]
+  [cli] --> [utils]
+}
+@enduml
 ```
