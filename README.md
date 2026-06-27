@@ -10,22 +10,22 @@
 
 - To run test suite: `uv run pytest`
 
-## Dependencies
+## Related to
 
-📖 [TOML](https://github.com/toml-lang/toml)
+📖 [TOML](https://github.com/toml-lang/toml) — Human-friendly config file format for software.
 
-🚀 [UV](https://docs.astral.sh/uv/)
+🚀 [UV](https://docs.astral.sh/uv/) — Fast Python package and project manager in Rust.
 
-🛠️ [Hatch](https://github.com/pypa/hatch)
+🛠️ [Hatch](https://github.com/pypa/hatch) — Modern Python project management and build tool.
 
-📦 [Setuptools](https://github.com/pypa/setuptools)
+📦 [Setuptools](https://github.com/pypa/setuptools) — Standard Python package building and distribution library.
 
-📚 [MkDocs](https://github.com/mkdocs/mkdocs/tree/master)
+📚 [MkDocs](https://github.com/mkdocs/mkdocs/tree/master) — Static site generator for project documentation in Markdown.
 
-🧪 [Pytest](https://github.com/pytest-dev/pytest)
+🧪 [Pytest](https://github.com/pytest-dev/pytest) — Python testing framework, simple and scalable.
 
-⚡ [Ruff](https://docs.astral.sh/ruff/)
+⚡ [Ruff](https://docs.astral.sh/ruff/) — Extremely fast Python linter and formatter in Rust.
 
-🔍 [MyPy](https://github.com/python/mypy)
+🔍 [MyPy](https://github.com/python/mypy) — Static type checker for Python code.
 
-🔐 [python-dotenv](https://github.com/theskumar/python-dotenv)
+🔐 [python-dotenv](https://github.com/theskumar/python-dotenv) — Loads environment variables from `.env` files.
